@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book Aura</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Variables for Better Maintainability */
+        :root {
+            --primary-gradient: linear-gradient(to right, #c1e0f7, #ffe3e0);
+            --text-color: #111;
+            --text-secondary: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            --border-radius: 20px;
+            --border-radius-small: 15px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            line-height: 1.6;
+        }
+
+        /* Container Class for Consistent Width */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Flexbox Utilities */
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        /* Text Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        /* Button Base Class */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: black;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: black;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d1d1d1;
+        }
+
+        .btn-blue {
+            background-color: #007bff;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: var(--border-radius-small);
+            font-size: 12px;
+        }
+
+        .btn-blue:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-dark {
+            background-color: #333;
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .btn-dark:hover {
+            background-color: #555;
+        }
+
+        /* Card Components */
+        .card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-hover);
+        }
+
+        /* Image Responsive Class */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* === NAVBAR STYLES === */
+        .navbar {
+            background-color: #82a9c2;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-brand {
+            color: black;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Baloo Bhai2', sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            gap: 1.5rem;
+        }
+
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .navbar-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .navbar-nav a.active {
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+
+        /* Mobile hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 2px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* === HEADER SECTION === */
+        .header {
+            flex-wrap: wrap;
+        }
+
+        .header .text {
+            flex: 1;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .header h1 span {
+            font-weight: bold;
+        }
+
+        .header .buttons {
+            margin-top: 30px;
+        }
+
+        .header .buttons .btn {
+            margin-right: 15px;
+        }
+
+        .header .image {
+            flex: 1;
+        }
+
+        .header .image img {
+            width: 80%;
+            max-width: 350px;
+            margin-left: 360px;
+        }
+
+        /* === ABOUT SECTION === */
+        .about-section .left {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .about-section h2 {
+            font-size: 28px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .about-section .right {
+            flex: 1;
+        }
+
+        .about-section .right img {
+            width: 80%;
+            border-radius: 30px;
+            max-width: 350px;
+        }
+
+        /* === MOOD SELECTION SECTION === */
+        .mood-section h2 {
+            font-size: 32px;
+            color: var(--text-color);
+            margin-bottom: 50px;
+        }
+
+        .mood-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .mood-card {
+            padding: 30px 20px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .mood-card img {
+            width: 100%;
+            /* height: 120px; */
+            object-fit: cover;
+            border-radius: var(--border-radius-small);
+            margin-bottom: 20px;
+            background: #f0f0f0;
+        }
+
+        .mood-card h3 {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .mood-card p {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .read-now-btn {
+            margin-top: 40px;
+        }
+
+        /* === BOOK SECTIONS === */
+        .book-section {
+            display: none;
+        }
+
+        .book-section.active {
+            display: block;
+        }
+
+        /* Show header and about by default */
+        .header,
+        .about-section {
+            display: flex;
+        }
+
+        .book-section h2 {
+            font-size: 28px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .book-section .subtitle {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .books-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .book-card {
+            padding: 20px;
+            width: 250px;
+            border-radius: var(--border-radius-small);
+        }
+
+        .book-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .book-card img {
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #f0f0f0;
+            background: #f0f0f0;
+        }
+
+        .book-card h4 {
+            font-size: 16px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        .book-card p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+
+        .back-btn {
+            padding: 12px 30px;
+            margin-top: 20px;
+        }
+
+        /* === CONTACT SECTION === */
+        .contact-section.active {
+            display: block;
+        }
+
+        .contact-section h2 {
+            font-size: 28px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-intro p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* FIXED FORM STYLING */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .contact-form .form-subtitle {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .contact-form button {
+            padding: 15px;
+            background-color: #007BFF;
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info Grid */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+            text-align: center;
+        }
+
+        .contact-info-card h4 {
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .contact-info-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .social-media {
+            text-align: center;
+        }
+
+        .social-media h4 {
+            font-size: 18px;
+            color: var(--text-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .social-media a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            padding: 10px 20px;
+            background: var(--white);
+            border-radius: 25px;
+            box-shadow: 0 2px 10px var(--shadow);
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .social-media a:hover {
+            background: #007BFF;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media screen and (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #82a9c2;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                gap: 0.5rem;
+            }
+
+            .navbar-nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header,
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header .image img,
+            .about-section .right img {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .about-section .left {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+
+            .mood-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .books-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .about-section h2 {
+                font-size: 24px;
+            }
+
+            .mood-section h2 {
+                font-size: 28px;
+            }
+
+            .contact-form {
+                margin: 0 20px 40px 20px;
+                padding: 20px;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .mood-card {
+                width: 180px;
+                padding: 20px 15px;
+            }
+
+            .book-card {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .book-card img {
+                width: 180px;
+                height: 220px;
+            }
+
+            .contact-form {
+                margin: 0 10px 40px 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-brand" onclick="goHome()">📖The Book Aura</div>
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-nav" id="navbar-nav">
+                <li><a href="#" onclick="goHome()" class="nav-link">Home</a></li>
+                <li><a href="#" onclick="showAbout()" class="nav-link">About</a></li>
+                <li><a href="#" onclick="showBooks()" class="nav-link">Books</a></li>
+                <li><a href="#" onclick="showContact()" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- === HEADER SECTION === -->
+    <header class="header flex-between container" id="home">
+        <div class="text">
+            <h1>The <span>Book</span><br><span>Aura</span></h1>
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="showMoodSelection()">Read Now</button>
+                <button class="btn btn-secondary" onclick="showContact()">Contact Us</button>
+            </div>
+        </div>
+        <div class="image flex-center">
+            <img src="white-headphones-white-background_81048-19922.avif" alt="Headphones" class="img-responsive" />
+        </div>
+    </header>
+
+    <!-- === ABOUT US SECTION === -->
+    <section class="about-section flex-between container" id="about">
+        <div class="left">
+            <h2>About Us</h2>
+            <p>
+                Welcome to The Book Aura - your personal reading companion that matches books to your current mood.
+                Whether you're feeling happy, sad, or angry, we help you discover the perfect book to enhance or
+                transform
+                your emotional state. Our curated collection ensures every reading experience resonates with your
+                feelings.
+            </p>
+        </div>
+        <div class="right flex-center">
+            <img src="b325f024a566f668f2bb4903a2bd5d5c.jpg" alt="About Us Image" class="img-responsive" />
+        </div>
+    </section>
+
+    <!-- === MOOD SELECTION SECTION === -->
+    <section class="mood-section text-center container" id="mood-selection" style="display: none;">
+        <h2>Fix your mood now!</h2>
+        <div class="mood-cards">
+            <div class="mood-card card" onclick="showBookSection('happy')">
+                <img src="HAPPY.PNG" alt="Happy" class="img-responsive" />
+                <h3 class="uppercase">HAPPY</h3>
+                <p>Uplifting stories to celebrate life's beautiful moments</p>
+            </div>
+            <div class="mood-card card" onclick="showBookSection('sad')">
+                <img src="Sad.PNG" alt="Sad" class="img-responsive" />
+                <h3 class="uppercase">SAD</h3>
+                <p>Healing stories to help you through difficult times</p>
+            </div>
+            <div class="mood-card card" onclick="showBookSection('angry')">
+                <img src="Angry.PNG" alt="Angry" class="img-responsive" />
+                <h3 class="uppercase">ANGRY</h3>
+                <p>Transformative books to channel your emotions</p>
+            </div>
+        </div>
+        <button class="btn btn-dark read-now-btn uppercase">READ NOW</button>
+    </section>
+
+    <!-- === HAPPY BOOKS SECTION === -->
+    <section class="book-section text-center container" id="happy-books">
+        <h2 class="uppercase">YOU'RE FEELING</h2>
+        <div class="subtitle uppercase">HAPPY</div>
+        <div class="books-grid">
+            <article class="book-card card text-center">
+                <img src="H-1.jpg" alt="The House in the Cerulean Sea" />
+                <h4 class="uppercase">THE HOUSE IN THE CERULEAN SEA</h4>
+                <p>Found family fantasy warmth</p>
+                <a href="https://www.bing.com/ck/a?!&&p=d424e075abb06d1b30ef5af3574de83b322514fd76f3c691379d92b3c5bc6d18JmltdHM9MTc1NDYxMTIwMA&ptn=3&ver=2&hsh=4&fclid=2a283fd0-2ef7-6910-0de6-2aa32f2c6849&psq=the+house+in+the+cerulean+sea+full+book&u=a1aHR0cHM6Ly93d3cuZ29vZHJlYWRzLmNvbS9ib29rL3Nob3cvNDUwNDczODQtdGhlLWhvdXNlLWluLXRoZS1jZXJ1bGVhbi1zZWE&ntb=1"
+                    target="_blank" class="btn btn-blue">Read Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="H-2.webp" alt="Anxious People" />
+                <h4 class="uppercase">ANXIOUS PEOPLE</h4>
+                <p>Humorous heartwarming flawed people</p>
+                <a href="https://openlibrary.org/works/OL20656755W/Anxious_People" target="_blank"
+                    class="btn btn-blue">Read
+                    Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="H-3.jpeg" alt="The Hitchhiker's Guide to the Galaxy" />
+                <h4 class="uppercase">THE HITCHHIKER'S GUIDE</h4>
+                <p>Hilarious absurd cosmic journey</p>
+                <a href="https://openlibrary.org/works/OL2163721W/The_Hitchhiker's_Guide_to_the_Galaxy" target="_blank"
+                    class="btn btn-blue">Read Now</a>
+            </article>
+        </div>
+        <button class="btn btn-secondary back-btn" onclick="showMoodSection()">Go Back</button>
+    </section>
+
+    <!-- === SAD BOOKS SECTION === -->
+    <section class="book-section text-center container" id="sad-books">
+        <h2 class="uppercase">YOU'RE FEELING</h2>
+        <div class="subtitle uppercase">SAD</div>
+        <div class="books-grid">
+            <article class="book-card card text-center">
+                <img src="S-1.webp" alt="A Little Life" />
+                <h4 class="uppercase">A LITTLE LIFE</h4>
+                <p>Deeply moving heartbreaking friendship tale</p>
+                <a href="https://openlibrary.org/works/OL17207995W/A_Little_Life" target="_blank"
+                    class="btn btn-blue">Read
+                    Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="S-2.jpeg" alt="The Book Thief" />
+                <h4 class="uppercase">THE BOOK THIEF</h4>
+                <p>Poignant World War II story</p>
+                <a href="https://openlibrary.org/works/OL5735363W/The_Book_Thief" target="_blank"
+                    class="btn btn-blue">Read
+                    Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="S-3.webp" alt="The Kite Runner" />
+                <h4 class="uppercase">THE KITE RUNNER</h4>
+                <p>Friendship betrayal and redemption story</p>
+                <a href="https://openlibrary.org/works/OL45804W/The_Kite_Runner" target="_blank"
+                    class="btn btn-blue">Read
+                    Now</a>
+            </article>
+        </div>
+        <button class="btn btn-secondary back-btn" onclick="showMoodSection()">Go Back</button>
+    </section>
+
+    <!-- === ANGRY BOOKS SECTION === -->
+    <section class="book-section text-center container" id="angry-books">
+        <h2 class="uppercase">YOU'RE FEELING</h2>
+        <div class="subtitle uppercase">ANGRY</div>
+        <div class="books-grid">
+            <article class="book-card card text-center">
+                <img src="A-1.webp" alt="Rage Becomes Her" />
+                <h4 class="uppercase">RAGE BECOMES HER</h4>
+                <p>Revolutionary power of women's anger</p>
+                <a href="https://openlibrary.org/works/OL20152445W/Rage_Becomes_Her" target="_blank"
+                    class="btn btn-blue">Read
+                    Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="A-2.jpg" alt="Anger: Wisdom for Cooling the Flames" />
+                <h4 class="uppercase">ANGER: WISDOM FOR COOLING</h4>
+                <p>Buddhist guide to managing anger</p>
+                <a href="https://openlibrary.org/works/OL3270742W/Anger" target="_blank" class="btn btn-blue">Read
+                    Now</a>
+            </article>
+            <article class="book-card card text-center">
+                <img src="A-3.webp" alt="The Power" />
+                <h4 class="uppercase">THE POWER</h4>
+                <p>Women develop electric shock abilities</p>
+                <a href="https://openlibrary.org/works/OL17306968W/The_Power" target="_blank" class="btn btn-blue">Read
+                    Now</a>
+            </article>
+        </div>
+        <button class="btn btn-secondary back-btn" onclick="showMoodSection()">Go Back</button>
+    </section>
+
+    <!-- === CONTACT US SECTION === -->
+    <section class="contact-section container" id="contact">
+        <div class="contact-intro">
+            <h2>Contact Us</h2>
+            <p>
+                We'd love to hear from you! Get in touch with us for any questions about books,
+                recommendations, or just to share your reading experience.
+            </p>
+        </div>
+
+        <!-- FIXED CONTACT FORM -->
+        <div class="contact-form">
+            <h3>We'd love to hear from you</h3>
+            <p class="form-subtitle">Feel free to reach out—just fill out the form below.</p>
+            <form action="https://formspree.io/f/xkgzkogk" method="POST">
+                <input type="text" name="name" placeholder="Enter Your Name" required>
+                <input type="email" name="_replyto" placeholder="Enter Your E-mail Address" required>
+                <textarea name="message" placeholder="Your message…" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <!-- CONTACT INFO GRID -->
+        <div class="contact-info-grid">
+            <div class="contact-info-card">
+                <h4>Main Office</h4>
+                <p>123 Book Street</p>
+                <p>Any City, State</p>
+                <p>Any Country</p>
+                <p><strong>(123) 456-7890</strong></p>
+            </div>
+
+            <div class="contact-info-card">
+                <h4>Branch Office</h4>
+                <p>456 Reading Ave</p>
+                <p>Any City, State</p>
+                <p>Any Country</p>
+                <p><strong>(123) 456-7891</strong></p>
+            </div>
+
+            <div class="contact-info-card">
+                <h4>Email Us</h4>
+                <p><strong>hello@thebookaura.com</strong></p>
+                <p>support@thebookaura.com</p>
+                <p>We respond within 24 hours</p>
+            </div>
+        </div>
+
+        <!-- SOCIAL MEDIA -->
+        <div class="social-media">
+            <h4>Follow Us</h4>
+            <a href="#" onclick="alert('Facebook page coming soon!')">Facebook</a>
+            <a href="#" onclick="alert('Instagram page coming soon!')">Instagram</a>
+            <a href="#" onclick="alert('Twitter page coming soon!')">Twitter</a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navbar = document.getElementById('navbar-nav');
+            navbar.classList.toggle('active');
+        }
+
+        // Update active nav link
+        function updateActiveNav(activeSection) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            switch (activeSection) {
+                case 'home':
+                    navLinks[0].classList.add('active');
+                    break;
+                case 'about':
+                    navLinks[1].classList.add('active');
+                    break;
+                case 'books':
+                    navLinks[2].classList.add('active');
+                    break;
+                case 'contact':
+                    navLinks[3].classList.add('active');
+                    break;
+            }
+        }
+
+        // Navigation functions
+        function goHome() {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            // Show home sections
+            document.getElementById('home').style.display = 'flex';
+            document.getElementById('about').style.display = 'flex';
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            updateActiveNav('home');
+        }
+
+        function showAbout() {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            document.getElementById('home').style.display = 'none';
+
+            // Show about section
+            document.getElementById('about').style.display = 'flex';
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            updateActiveNav('about');
+        }
+
+        function showBooks() {
+            showMoodSelection();
+            updateActiveNav('books');
+        }
+
+        function showMoodSelection() {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            document.getElementById('home').style.display = 'none';
+
+            // Show mood selection
+            document.getElementById('mood-selection').style.display = 'block';
+            document.getElementById('mood-selection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showBookSection(mood) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            document.getElementById('home').style.display = 'none';
+
+            // Show the corresponding book section
+            const sectionId = mood + '-books';
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+                section.classList.add('active');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+            updateActiveNav('books');
+        }
+
+        function showContact() {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            document.getElementById('home').style.display = 'none';
+
+            // Show contact section
+            document.getElementById('contact').style.display = 'block';
+            document.getElementById('contact').classList.add('active');
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            updateActiveNav('contact');
+        }
+
+        function showMoodSection() {
+            showMoodSelection();
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set home as active initially
+            updateActiveNav('home');
+
+            // Add functionality to READ NOW button in mood section
+            const readNowBtn = document.querySelector('.read-now-btn');
+            if (readNowBtn) {
+                readNowBtn.addEventListener('click', function () {
+                    document.getElementById('mood-selection').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Add form submission handler
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    // Get form data
+                    const formData = new FormData(this);
+                    const name = formData.get('name');
+                    const email = formData.get('_replyto');
+                    const message = formData.get('message');
+
+                    // Simple validation
+                    if (name && email && message) {
+                        alert(`Thank you ${name}! Your message has been received. We'll get back to you at ${email} soon!`);
+                    }
+                });
+            }
+
+            // Close mobile menu when clicking on nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    document.getElementById('navbar-nav').classList.remove('active');
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function (event) {
+                const navbar = document.getElementById('navbar-nav');
+                const hamburger = document.querySelector('.hamburger');
+
+                if (!navbar.contains(event.target) && !hamburger.contains(event.target)) {
+                    navbar.classList.remove('active');
+                }
+            });
+
+            console.log('Page loaded - All navigation functionality enabled');
+        });
+    </script>
+</body>
+
+</html>
